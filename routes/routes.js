@@ -88,6 +88,16 @@ const router = app => {
         response.setHeader('Access-Control-Allow-Origin', '*');
         response.send(products);
     });
+
+    app.get(`/products/:id`, (request, response) => {
+        let productId = request.params.id;
+        let productItem = products.data.find((obj) => {
+            return obj._id === productId;
+        });
+
+        response.setHeader('Access-Control-Allow-Origin', '*');
+        response.send(productItem);
+    });
 }
 
 // Export the router
