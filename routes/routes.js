@@ -98,6 +98,21 @@ const router = app => {
         response.setHeader('Access-Control-Allow-Origin', '*');
         response.send(productItem);
     });
+
+    app.post('/checkUsername', (request, response) => {
+        let answer = {
+            data: {
+                "Имя пользователя занято": true
+            },
+            error: null
+        }
+
+        сonsole.log(request.body);
+
+        response.setHeader('Access-Control-Allow-Origin', '*');
+        response.setHeader('Access-Control-Allow-Headers', 'origin, content-type, accept');
+        response.send(answer);
+    });
 }
 
 // Export the router
