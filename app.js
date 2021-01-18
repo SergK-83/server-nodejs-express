@@ -3,6 +3,7 @@ const express = require('express');
 const port = 8090;
 const bodyParser = require('body-parser');
 const routes = require('./routes/routes');
+const cors = require('cors');
 const app = express();
 
 // Use Node.js body parsing middleware
@@ -10,6 +11,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true,
 }));
+app.use(cors());
 
 routes(app);
 

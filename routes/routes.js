@@ -75,6 +75,7 @@ const products = {
         }
     ]
 };
+const username = 'Serg';
 
 // Router
 const router = app => {
@@ -100,17 +101,17 @@ const router = app => {
     });
 
     app.post('/checkUsername', (request, response) => {
-        let answer = {
+        let user = request.body;
+        let answer = (user.username === username) ? {
             data: {
-                "Имя пользователя занято": true
+                username: "Имя пользователя занято"
             },
             error: null
         }
+        : {data: null, error: null};
 
-        сonsole.log(request.body);
+        console.log(user.username);
 
-        response.setHeader('Access-Control-Allow-Origin', '*');
-        response.setHeader('Access-Control-Allow-Headers', 'origin, content-type, accept');
         response.send(answer);
     });
 }
