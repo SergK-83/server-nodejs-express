@@ -75,7 +75,8 @@ const products = {
         }
     ]
 };
-const username = 'Serg';
+const username = 'User';
+const password = '123';
 
 // Router
 const router = app => {
@@ -110,7 +111,21 @@ const router = app => {
         }
         : {data: null, error: null};
 
-        console.log(user.username);
+        response.send(answer);
+    });
+
+    app.post('/checkPassword', (request, response) => {
+        let user = request.body;
+        let data = null;
+        
+        if (user.username !== username || user.password !== password) {
+            data = {};
+
+            (user.username !== username) ? (data.username = "Invalid username") : null;
+            (user.password !== password) ? (data.password = "Invalid password") : null;
+        }
+        
+        let answer = {data: data, error: null};
 
         response.send(answer);
     });
